@@ -220,7 +220,7 @@ dependencies = [
 
 [[package]]
 name = "bevy-fusabi"
-version = "0.1.2"
+version = "0.1.4"
 dependencies = [
  "anyhow",
  "bevy",
@@ -1312,21 +1312,22 @@ checksum = "aa9a19cbb55df58761df49b23516a86d432839add4af60fc256da840f66ed35b"
 
 [[package]]
 name = "fusabi-frontend"
-version = "0.12.0"
+version = "0.17.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b80729381bfc74d2134af7b39ae4952023d241e4f3f441151bdf9e6fe8a97670"
+checksum = "90c2e9c1ad85e4e711060f57249d90d5b7a8695332eb85dcf4a368f833cd86d3"
 dependencies = [
  "fusabi-vm",
 ]
 
 [[package]]
 name = "fusabi-vm"
-version = "0.12.0"
+version = "0.17.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "acdad3c03d5e9de91662bf58c269cc5e4496ba2f146782617ae7ce387a6948fa"
+checksum = "6189bf3121fb4a7b22c18896aa6876f909e81f7375484fefec90d931d7d37387"
 dependencies = [
  "bincode",
  "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -1561,6 +1562,12 @@ checksum = "413ee7dfc52ee1a4949ceeb7dbc8a33f2d6c088194d9f922fb8318faf1f01186"
 dependencies = [
  "either",
 ]
+
+[[package]]
+name = "itoa"
+version = "1.0.15"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4a5f13b858c8d314ee3e8f639011f7ccefe71f97f96e50151fb991f267928e2c"
 
 [[package]]
 name = "jni"
@@ -2220,6 +2227,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b39cdef0fa800fc44525c84ccb54a029961a8215f9619753635a9c0d2538d46d"
 
 [[package]]
+name = "ryu"
+version = "1.0.20"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "28d3b2b1366ec20994f1fd18c3c594f05c5dd4bc44d8bb0c1c632c8d6829481f"
+
+[[package]]
 name = "same-file"
 version = "1.0.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2268,6 +2281,19 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
+]
+
+[[package]]
+name = "serde_json"
+version = "1.0.145"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "402a6f66d8c709116cf22f558eab210f5a50187f702eb4d7e5ef38d9a7f1c79c"
+dependencies = [
+ "itoa",
+ "memchr",
+ "ryu",
+ "serde",
+ "serde_core",
 ]
 
 [[package]]
