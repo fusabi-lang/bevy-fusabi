@@ -89,6 +89,6 @@ jobs:
 
       - name: Publish to crates.io
         if: github.event.inputs.dry_run != 'true'
-        run: cargo publish --token ${{ secrets.CARGO_TOKEN }}
+        run: cargo publish --token ${{ secrets.CARGO_TOKEN }} --allow-dirty
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_TOKEN }}
