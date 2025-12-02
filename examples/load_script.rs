@@ -30,10 +30,13 @@ fn check_asset(
                 let script = scripts.get(*id).unwrap();
                 println!("Script loaded successfully: {}", script.name);
                 println!("Bytecode size: {} bytes", script.bytecode.len());
-                
+
                 // Verify we can deserialize it
                 match script.to_chunk() {
-                    Ok(chunk) => println!("Deserialized chunk successfully. Opcode count: {}", chunk.instructions.len()),
+                    Ok(chunk) => println!(
+                        "Deserialized chunk successfully. Opcode count: {}",
+                        chunk.instructions.len()
+                    ),
                     Err(e) => println!("Failed to deserialize chunk: {}", e),
                 }
             }

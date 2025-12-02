@@ -1,8 +1,7 @@
 use crate::asset::FusabiScript;
-use bevy::asset::{AssetLoader, LoadContext, io::Reader};
-use bevy::prelude::*;
+use bevy::asset::{io::Reader, AssetLoader, LoadContext};
 use fusabi_frontend::{Compiler, Lexer, Parser};
-use fusabi_vm::{Chunk, serialize_chunk};
+use fusabi_vm::{serialize_chunk, Chunk};
 use thiserror::Error;
 
 #[derive(Default)]
@@ -14,7 +13,7 @@ pub enum FusabiLoaderError {
     #[error("IO error: {0}")]
     Io(#[from] std::io::Error),
     #[error("Lexer error: {0}")]
-    Lexer(String), 
+    Lexer(String),
     #[error("Parser error: {0:?}")]
     Parser(String),
     #[error("Compiler error: {0:?}")]
@@ -36,7 +35,11 @@ impl AssetLoader for FusabiLoader {
         _settings: &Self::Settings,
         load_context: &mut LoadContext<'_>,
     ) -> Result<Self::Asset, Self::Error> {
-        let ext = load_context.path().extension().and_then(|s| s.to_str()).unwrap_or("");
+        let ext = load_context
+            .path()
+            .extension()
+            .and_then(|s| s.to_str())
+            .unwrap_or("");
         let name = load_context
             .path()
             .file_stem()
@@ -69,18 +72,17 @@ impl AssetLoader for FusabiLoader {
 /// Helper to compile source code into a Chunk
 fn compile_source(source: &str) -> Result<Chunk, FusabiLoaderError> {
     let mut lexer = Lexer::new(source);
-    let tokens = lexer.tokenize().map_err(|e| {
-        FusabiLoaderError::Lexer(format!("{:?}", e))
-    })?;
+    let tokens = lexer
+        .tokenize()
+        .map_err(|e| FusabiLoaderError::Lexer(format!("{:?}", e)))?;
 
     let mut parser = Parser::new(tokens);
-    let program = parser.parse_program().map_err(|e| {
-        FusabiLoaderError::Parser(format!("{:?}", e))
-    })?;
+    let program = parser
+        .parse_program()
+        .map_err(|e| FusabiLoaderError::Parser(format!("{:?}", e)))?;
 
-    let chunk = Compiler::compile_program(&program).map_err(|e| {
-        FusabiLoaderError::Compiler(format!("{:?}", e))
-    })?;
+    let chunk = Compiler::compile_program(&program)
+        .map_err(|e| FusabiLoaderError::Compiler(format!("{:?}", e)))?;
 
     Ok(chunk)
 }

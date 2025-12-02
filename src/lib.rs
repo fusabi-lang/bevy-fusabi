@@ -2,8 +2,8 @@ pub mod asset;
 pub mod loader;
 pub mod runner;
 
-use bevy::prelude::*;
 use asset::FusabiScript;
+use bevy::prelude::*;
 use loader::FusabiLoader;
 
 pub struct FusabiPlugin;
@@ -11,7 +11,7 @@ pub struct FusabiPlugin;
 impl Plugin for FusabiPlugin {
     fn build(&self, app: &mut App) {
         app.init_asset::<FusabiScript>()
-           .init_asset_loader::<FusabiLoader>();
+            .init_asset_loader::<FusabiLoader>();
     }
 }
 

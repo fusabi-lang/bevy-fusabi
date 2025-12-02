@@ -1,5 +1,5 @@
-use bevy::prelude::*;
 use crate::prelude::*;
+use bevy::prelude::*;
 use fusabi_vm::Vm;
 
 pub struct RunnerPlugin;
@@ -16,10 +16,7 @@ pub struct RunScript {
     pub executed: bool,
 }
 
-fn run_scripts(
-    mut query: Query<&mut RunScript>,
-    scripts: Res<Assets<FusabiScript>>,
-) {
+fn run_scripts(mut query: Query<&mut RunScript>, scripts: Res<Assets<FusabiScript>>) {
     for mut runner in query.iter_mut() {
         if runner.executed {
             continue;
@@ -29,13 +26,13 @@ fn run_scripts(
         // actually we can just use &runner.handle
         if let Some(script) = scripts.get(&runner.handle) {
             println!("Executing script: {}", script.name);
-            
+
             // Deserialize chunk
             match script.to_chunk() {
                 Ok(chunk) => {
                     // Create VM (thread-local or on-demand)
                     let mut vm = Vm::new();
-                    
+
                     // Execute
                     match vm.execute(chunk) {
                         Ok(value) => {

@@ -13,7 +13,7 @@ fn main() {
 
 fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     let handle = asset_server.load("hello.fsx");
-    
+
     // Spawn an entity that wants to run this script
     commands.spawn(RunScript {
         handle,
