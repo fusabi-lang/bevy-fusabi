@@ -1,0 +1,31 @@
+# CODEOWNERS file for bevy-fusabi
+#
+# This file defines the individuals or teams responsible for code in this repository.
+# When a pull request is opened, the code owners are automatically requested for review.
+#
+# More info: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything in the repo
+# These users will be requested for review when someone opens a pull request
+* @fusabi-lang/bevy-fusabi-maintainers
+
+# Fallback to primary maintainer if team doesn't exist
+* brewbaker.aaron@gmail.com
+
+# Documentation
+/docs/ @fusabi-lang/bevy-fusabi-maintainers
+
+# CI/CD workflows
+/.github/ @fusabi-lang/bevy-fusabi-maintainers
+
+# Release-critical files
+/Cargo.toml @fusabi-lang/bevy-fusabi-maintainers
+/CHANGELOG.md @fusabi-lang/bevy-fusabi-maintainers
+/RELEASING.md @fusabi-lang/bevy-fusabi-maintainers
+/docs/RELEASE.md @fusabi-lang/bevy-fusabi-maintainers
+
+# Core source code
+/src/ @fusabi-lang/bevy-fusabi-maintainers
+
+# Examples (broader review is acceptable)
+/examples/ @fusabi-lang/bevy-fusabi-maintainers
