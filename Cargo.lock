@@ -220,7 +220,7 @@ dependencies = [
 
 [[package]]
 name = "bevy-fusabi"
-version = "0.1.4"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "bevy",
@@ -1312,20 +1312,21 @@ checksum = "aa9a19cbb55df58761df49b23516a86d432839add4af60fc256da840f66ed35b"
 
 [[package]]
 name = "fusabi-frontend"
-version = "0.17.0"
+version = "0.21.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "90c2e9c1ad85e4e711060f57249d90d5b7a8695332eb85dcf4a368f833cd86d3"
+checksum = "0b3f1fbcd3597491f2a491447952ef967bb00bb21ba463b8dba8616522a9148c"
 dependencies = [
  "fusabi-vm",
 ]
 
 [[package]]
 name = "fusabi-vm"
-version = "0.17.0"
+version = "0.21.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6189bf3121fb4a7b22c18896aa6876f909e81f7375484fefec90d931d7d37387"
+checksum = "3220fb0719eaadf36f5913999e16def5f73a022ae4dfae867f58cfced7594530"
 dependencies = [
  "bincode",
+ "lazy_static",
  "serde",
  "serde_json",
 ]
