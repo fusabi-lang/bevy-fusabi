@@ -1,6 +1,6 @@
 [package]
 name = "bevy-fusabi"
-version = "0.1.4"
+version = "0.2.0"
 edition = "2021"
 authors = ["Aaron Brewbaker <brewbaker.aaron@gmail.com>"]
 description = "Bevy integration for the Fusabi scripting language"
@@ -18,8 +18,8 @@ rust-version = "1.75"
 bevy = { version = "0.15", default-features = false, features = ["bevy_asset"] }
 
 # Fusabi Runtime & Compiler
-fusabi-vm = { version = "0.17.0", features = ["serde"] }
-fusabi-frontend = "0.17.0"
+fusabi-vm = { version = "0.21.0", features = ["serde"] }
+fusabi-frontend = "0.21.0"
 
 # Utilities
 thiserror = "1.0"
