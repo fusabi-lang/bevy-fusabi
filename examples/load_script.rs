@@ -12,7 +12,7 @@ fn main() {
 }
 
 #[derive(Resource)]
-struct ScriptHandle(Handle<FusabiScript>);
+struct ScriptHandle(#[allow(dead_code)] Handle<FusabiScript>);
 
 fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     let handle = asset_server.load("hello.fsx");
@@ -25,22 +25,19 @@ fn check_asset(
     scripts: Res<Assets<FusabiScript>>,
 ) {
     for event in events.read() {
-        match event {
-            AssetEvent::LoadedWithDependencies { id } => {
-                let script = scripts.get(*id).unwrap();
-                println!("Script loaded successfully: {}", script.name);
-                println!("Bytecode size: {} bytes", script.bytecode.len());
+        if let AssetEvent::LoadedWithDependencies { id } = event {
+            let script = scripts.get(*id).unwrap();
+            println!("Script loaded successfully: {}", script.name);
+            println!("Bytecode size: {} bytes", script.bytecode.len());
 
-                // Verify we can deserialize it
-                match script.to_chunk() {
-                    Ok(chunk) => println!(
-                        "Deserialized chunk successfully. Opcode count: {}",
-                        chunk.instructions.len()
-                    ),
-                    Err(e) => println!("Failed to deserialize chunk: {}", e),
-                }
+            // Verify we can deserialize it
+            match script.to_chunk() {
+                Ok(chunk) => println!(
+                    "Deserialized chunk successfully. Opcode count: {}",
+                    chunk.instructions.len()
+                ),
+                Err(e) => println!("Failed to deserialize chunk: {}", e),
             }
-            _ => {}
         }
     }
 }
