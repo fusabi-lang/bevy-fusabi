@@ -18,8 +18,8 @@ rust-version = "1.75"
 bevy = { version = "0.15", default-features = false, features = ["bevy_asset"] }
 
 # Fusabi Runtime & Compiler
-fusabi-vm = { version = "0.21.0", features = ["serde"] }
-fusabi-frontend = "0.21.0"
+fusabi-vm = { version = "0.35.0", features = ["serde"] }
+fusabi-frontend = "0.35.0"
 
 # Utilities
 thiserror = "1.0"
